@@ -54,9 +54,10 @@ test.describe('TOB PJT', () => {
     await page.locator('button').filter({ hasText: 'アクションを表示' }).click();
     await page.locator('a').filter({ hasText: /^書面アップロード$/ }).click();
     await page.getByRole('button', { name: '説明書 アップロード' }).click();
-    const fileInput = page.getByRole('textbox', { name: '（ファイル指定） ファイルの選択 ファイルをアップロード' }).setInputFiles([]);
-    const filePath = path.resolve(__dirname, 'path/to/your/test.pdf');
+    const filePath = path.resolve(__dirname, 'test.pdf');
+    const fileInput = page.getByRole('textbox', { name: '（ファイル指定） ファイルの選択 ファイルをアップロード' });
     await fileInput.setInputFiles(filePath);
+    await page.getByRole('button', { name: '完了' }).click();
   });
   // test('ITS-A11-001(TEST_33-42)', async () => {
    
